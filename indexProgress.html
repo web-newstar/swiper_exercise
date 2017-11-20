@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Swiper</title>
+    <link rel="stylesheet" href="./css/swiper-3.4.2.min.css">
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: 500px;
+        }
+        .swiper-container .swiper-slide{
+            background: pink;
+        }
+        h1{
+            background: skyblue;
+            width:100px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var mySwiper = new Swiper('.swiper-container', {
+                // Slides的滑动方向，可设置水平(horizontal)或垂直(vertical)。
+                direction: 'horizontal',// 
+                // 滑动速度，即slider自动滑动开始到结束的时间（单位ms），也是触摸滑动时释放至贴合的时间。
+                speed:1100,
+                autoplay : 800,
+                watchSlidesProgress : true,
+                // 如果需要分页器
+                pagination: '.swiper-pagination',
+
+                // 初始化时的slide的索引
+                initialSlide:2,
+
+                /*开启watchSlidesVisibility选项前需要先开启watchSlidesProgress，如果开启了watchSlidesVisibility，则会在每个可见slide增加一个classname，默认为'swiper-slide-visible'。*/
+                watchSlidesVisibility : true,
+
+                /*默认为false，普通模式：slide滑动时只滑动一格，并自动贴合wrapper，设置为true则变为free模式，slide会根据惯性滑动且不会贴合。*/
+                freeMode:true,
+                slidesPerView : 2,  
+                // slidesPerView:'auto',
+                centeredSlides : true,
+            })
+            var Swipers=document.getElementsByClassName("swiperProgress")[0];
+            var Slides=document.getElementsByClassName("sliderProgress")[0];
+            Swipers.innerHTML=mySwiper.progress;
+            console.log(mySwiper)
+            Slides.innerHTML=mySwiper.slides[2].progress
+        }
+    </script>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" data-hash="www.baidu.com"  data-history="slide1">  
+                <h1 data-swiper-parallax="-300">你好</h1>
+            </div>
+            <div class="swiper-slide" data-hash="slide2"  data-history="slide2">
+                    <h1 data-swiper-parallax="-300">世界</h1>
+            </div>
+            <div class="swiper-slide" data-hash="slide3"  data-history="slide3">
+                    <h1 data-swiper-parallax="-300">互联网</h1>
+            </div>
+            <div class="swiper-slide" data-hash="slide4"  data-history="slide4">
+                    <h1 data-swiper-parallax="-300">马云</h1>
+            </div>
+            <div class="swiper-slide" data-hash="slide5"  data-history="slide5">
+                    <h1 data-swiper-parallax="-300">liyunl</h1>
+            </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- 如果需要滚动条 -->
+        <div class="swiper-scrollbar"></div>
+    </div>
+    <h1 class="swiperProgress"></h1>
+    <h2 class="sliderProgress"></h2>
+    
+    <script src="./js/swiper-3.4.2.min.js"></script>
+</body>
+
+</html>
